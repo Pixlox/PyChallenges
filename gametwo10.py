@@ -3,7 +3,7 @@ import time
 import random
 
 def main():
-    win = GraphWin("shape go left right up down (controls: WASD)", 400, 400)
+    win = GraphWin("shape go left right up down", 400, 400)
     shape = Circle(Point(200, 200), 20)
     shape.setFill("red")
     shape.draw(win)
@@ -11,6 +11,9 @@ def main():
     target_x = random.randint(10, 390)
     target_y = random.randint(10, 390)
     target = Circle(Point(target_x, target_y), 10)
+    controlsMessage = Text(Point(200, 50), "Controls: WASD \nGet to the green point.")
+    controlsMessage.setSize(18)
+    controlsMessage.draw(win)
     target.setFill("green")
     target.draw(win)
 
