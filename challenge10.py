@@ -9,7 +9,7 @@ def change_colour(rectangles, clicked_rectangle):
             rectangle.setFill(shapeColour)
 
 def main():
-    win = GraphWin("4 rectangles yay", 400, 400)
+    win = GraphWin("4 rectangles yay THAT CHANGE COLOUR BUT WEIRD yay", 400, 400)
 
     x1, y1 = 0, 0
     x2, y2 = win.getWidth() / 2, win.getHeight() / 2
