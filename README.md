@@ -1,2 +1,2 @@
 # PyChallenges
-A selection of answers to Python challenges my school has provided for my IST class. 
+Answers to python challenges my school has provided me to complete for my computing class. Uses graphics.py as its main framework.
