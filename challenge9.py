@@ -1,13 +1,13 @@
 from graphics import *
 import random
 
-def change_color(rectangle):
+def change_colour(rectangle):
     current_colour = rectangle.config.get("fill")
     shapeColour = random.choice(["red", "cyan", "green", "magenta", "blue", "orange", "yellow", "purple"]) 
     rectangle.setFill(shapeColour)
 
 def main():
-    win = GraphWin("4 rectangles yay", 400, 400)
+    win = GraphWin("4 rectangles THAT CHANGE COLOUR yay", 400, 400)
 
     x1, y1 = 0, 0
     x2, y2 = win.getWidth() / 2, win.getHeight() / 2
@@ -33,15 +33,15 @@ def main():
         click_point = win.getMouse()
         if rect1.getP1().getX() <= click_point.getX() <= rect1.getP2().getX() and \
            rect1.getP1().getY() <= click_point.getY() <= rect1.getP2().getY():
-            change_color(rect1)
+            change_colour(rect1)
         elif rect2.getP1().getX() <= click_point.getX() <= rect2.getP2().getX() and \
              rect2.getP1().getY() <= click_point.getY() <= rect2.getP2().getY():
-            change_color(rect2)
+            change_colour(rect2)
         elif rect3.getP1().getX() <= click_point.getX() <= rect3.getP2().getX() and \
              rect3.getP1().getY() <= click_point.getY() <= rect3.getP2().getY():
-            change_color(rect3)
+            change_colour(rect3)
         elif rect4.getP1().getX() <= click_point.getX() <= rect4.getP2().getX() and \
              rect4.getP1().getY() <= click_point.getY() <= rect4.getP2().getY():
-            change_color(rect4)
+            change_colour(rect4)
 
 main()

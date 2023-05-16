@@ -47,7 +47,7 @@ The library provides the following graphical objects:
     Image
 
 Various attributes of graphical objects can be set such as
-outline-color, fill-color and line-width. Graphical objects also
+outline-colour, fill-colour and line-width. Graphical objects also
 support moving and hiding for animation effects.
 
 The library also provides a very simple class for pixel-based image
@@ -139,7 +139,7 @@ __version__ = "5.0"
 #          Python 2.3 and IDLE 1.0 under Windows (still some issues).
 #     Removed vestigial turtle graphics.
 #     Added ability to configure font for Entry objects (analogous to Text)
-#     Added setTextColor for Text as an alias of setFill
+#     Added setTextcolour for Text as an alias of setFill
 #     Changed to class-style exceptions
 #     Fixed cloning of Text objects
 
@@ -252,10 +252,10 @@ class GraphWin(tk.Canvas):
         self.lastKey = evnt.keysym
 
 
-    def setBackground(self, color):
-        """Set background color of the window"""
+    def setBackground(self, colour):
+        """Set background colour of the window"""
         self.__checkOpen()
-        self.config(bg=color)
+        self.config(bg=colour)
         self.__autoflush()
         
     def setCoords(self, x1, y1, x2, y2):
@@ -286,18 +286,18 @@ class GraphWin(tk.Canvas):
             _root.update()
 
     
-    def plot(self, x, y, color="black"):
-        """Set pixel (x,y) to the given color"""
+    def plot(self, x, y, colour="black"):
+        """Set pixel (x,y) to the given colour"""
         self.__checkOpen()
         xs,ys = self.toScreen(x,y)
-        self.create_line(xs,ys,xs+1,ys, fill=color)
+        self.create_line(xs,ys,xs+1,ys, fill=colour)
         self.__autoflush()
         
-    def plotPixel(self, x, y, color="black"):
+    def plotPixel(self, x, y, colour="black"):
         """Set pixel raw (independent of window coordinates) pixel
-        (x,y) to color"""
+        (x,y) to colour"""
         self.__checkOpen()
-        self.create_line(x,y,x+1,y, fill=color)
+        self.create_line(x,y,x+1,y, fill=colour)
         self.__autoflush()
       
     def flush(self):
@@ -459,13 +459,13 @@ class GraphicsObject:
             config[option] = DEFAULT_CONFIG[option]
         self.config = config
         
-    def setFill(self, color):
-        """Set interior color to color"""
-        self._reconfig("fill", color)
+    def setFill(self, colour):
+        """Set interior colour to colour"""
+        self._reconfig("fill", colour)
         
-    def setOutline(self, color):
-        """Set outline color to color"""
-        self._reconfig("outline", color)
+    def setOutline(self, colour):
+        """Set outline colour to colour"""
+        self._reconfig("outline", colour)
         
     def setWidth(self, width):
         """Set line weight to width"""
@@ -776,8 +776,8 @@ class Text(GraphicsObject):
         else:
             raise GraphicsError(BAD_OPTION)
 
-    def setTextColor(self, color):
-        self.setFill(color)
+    def setTextcolour(self, colour):
+        self.setFill(colour)
 
 
 class Entry(GraphicsObject):
@@ -790,7 +790,7 @@ class Entry(GraphicsObject):
         self.text = tk.StringVar(_root)
         self.text.set("")
         self.fill = "gray"
-        self.color = "black"
+        self.colour = "black"
         self.font = DEFAULT_CONFIG['font']
         self.entry = None
 
@@ -805,7 +805,7 @@ class Entry(GraphicsObject):
                               width=self.width,
                               textvariable=self.text,
                               bg = self.fill,
-                              fg = self.color,
+                              fg = self.colour,
                               font=self.font)
         self.entry.pack()
         #self.setFill(self.fill)
@@ -833,10 +833,10 @@ class Entry(GraphicsObject):
         self.text.set(t)
 
             
-    def setFill(self, color):
-        self.fill = color
+    def setFill(self, colour):
+        self.fill = colour
         if self.entry:
-            self.entry.config(bg=color)
+            self.entry.config(bg=colour)
 
             
     def _setFontComponent(self, which, value):
@@ -865,10 +865,10 @@ class Entry(GraphicsObject):
         else:
             raise GraphicsError(BAD_OPTION)
 
-    def setTextColor(self, color):
-        self.color=color
+    def setTextcolour(self, colour):
+        self.colour=colour
         if self.entry:
-            self.entry.config(fg=color)
+            self.entry.config(fg=colour)
 
 
 class Image(GraphicsObject):
@@ -925,7 +925,7 @@ class Image(GraphicsObject):
         return self.img.height()
 
     def getPixel(self, x, y):
-        """Returns a list [r,g,b] with the RGB color values for pixel (x,y)
+        """Returns a list [r,g,b] with the RGB colour values for pixel (x,y)
         r,g,b are in range(256)
 
         """
@@ -938,11 +938,11 @@ class Image(GraphicsObject):
         else:
             return list(map(int, value.split())) 
 
-    def setPixel(self, x, y, color):
-        """Sets pixel (x,y) to the given color
+    def setPixel(self, x, y, colour):
+        """Sets pixel (x,y) to the given colour
         
         """
-        self.img.put("{" + color +"}", (x, y))
+        self.img.put("{" + colour +"}", (x, y))
         
 
     def save(self, filename):
@@ -956,9 +956,9 @@ class Image(GraphicsObject):
         self.img.write( filename, format=ext)
 
         
-def color_rgb(r,g,b):
+def colour_rgb(r,g,b):
     """r,g,b are intensities of red, green, and blue in range(256)
-    Returns color specifier string for the resulting color"""
+    Returns colour specifier string for the resulting colour"""
     return "#%02x%02x%02x" % (r,g,b)
 
 def test():
