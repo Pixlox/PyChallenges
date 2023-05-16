@@ -9,12 +9,12 @@ def main():
     for i in range(100):
         c = Circle(Point(random.randint(0, 500), random.randint(0, 500)), random.randint(30, 200))
         
-        randColor = random.randint(1, 3)
-        if randColor == 1:
+        colorChosen = random.choice(["blue", "red", "yellow"])
+        if colorChosen == "blue":
             c.setOutline("blue")
-        elif randColor == 2:
+        elif colorChosen == "red":
             c.setOutline("red")
-        elif randColor == 3:
+        elif colorChosen == "yellow":
             c.setOutline("yellow")
 
         c.draw(win)
