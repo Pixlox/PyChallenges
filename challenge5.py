@@ -1,42 +1,37 @@
 from graphics import *
+import random
 
 def main():
-    win = GraphWin("i do not like python anymore", 400, 400)
-
-    center_x, center_y = win.getWidth() / 2, win.getHeight() / 2
-
-    message = Text(Point(center_x, center_y + 150), "colour wow")
-    message.draw(win)
-
-    triangle_size = 200
-    triangle_height = triangle_size * (3 ** 0.5) / 2
-
-    triangle_p1 = Point(center_x, center_y - (triangle_height / 3))
-    triangle_p2 = Point(center_x - triangle_size / 2, center_y + (2 * triangle_height) / 3)
-    triangle_p3 = Point(center_x + triangle_size / 2, center_y + (2 * triangle_height) / 3)
-
-    triangle = Polygon(triangle_p1, triangle_p2, triangle_p3)
-    triangle.setWidth(2)
-    triangle.setOutline("blue")
+    win = GraphWin("SHAPE WOW", 500, 500)
     
-    triangle.draw(win)
-
-    circle_radius = triangle_size / 4
-    circle_center = Point(center_x, center_y + 35 + triangle_height / 6)
-
-    circle = Circle(circle_center, circle_radius)
-    circle.setWidth(2)
-    circle.setOutline("red")
-    circle.draw(win)
-
-    line_start = Point(center_x, center_y + 35 - triangle_height / 2)
-    line_end = Point(center_x, center_y + 35 + triangle_height / 2)
-
-    line = Line(line_start, line_end)
-    line.setWidth(2)
-    line.setOutline("yellow")
-    line.draw(win)
-
+    for _ in range(10):
+        shape = random.choice(["circle", "rectangle", "triangle"]) 
+        
+        if shape == "circle":
+            center = Point(random.randint(50, 450), random.randint(50, 450))
+            radius = random.randint(10, 50)
+            colour = colour_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            circle = Circle(center, radius)
+            circle.setFill(colour)
+            circle.draw(win)
+        
+        elif shape == "rectangle":
+            p1 = Point(random.randint(50, 400), random.randint(50, 400))
+            p2 = Point(p1.getX() + random.randint(10, 100), p1.getY() + random.randint(10, 100))
+            colour = colour_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            rectangle = Rectangle(p1, p2)
+            rectangle.setFill(colour)
+            rectangle.draw(win)
+        
+        elif shape == "triangle":
+            p1 = Point(random.randint(50, 450), random.randint(50, 450))
+            p2 = Point(p1.getX() + random.randint(-100, 100), p1.getY() + random.randint(-100, 100))
+            p3 = Point(p1.getX() + random.randint(-100, 100), p1.getY() + random.randint(-100, 100))
+            colour = colour_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            triangle = Polygon(p1, p2, p3)
+            triangle.setFill(colour)
+            triangle.draw(win)
+    
     win.mainloop()
 
 main()
