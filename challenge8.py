@@ -1,7 +1,7 @@
 from graphics import *
 
 def main():
-    win = GraphWin("Text Entry", 400, 400)
+    win = GraphWin("Text entry", 400, 400)
 
     entry = Entry(Point(200, 50), 20)
     entry.draw(win)
@@ -18,7 +18,7 @@ def main():
 
         elif key == "BackSpace":
             text = text_box.getText()
-            text_box.setText(text[:-1]) 
+            text_box.setText(text[:-1])
 
         # Checking if Backspace because it doesn't handle well with Backspace, exclamation, question, etc.
         # Also this is kinda bad implementation not gonna lie
