@@ -1,7 +1,7 @@
 from graphics import *
 
 def main():
-    win = GraphWin("i do not like python anymore", 400, 400)
+    win = GraphWin("python deathly hallows", 400, 400)
 
     center_x, center_y = win.getWidth() / 2, win.getHeight() / 2
 
@@ -14,21 +14,24 @@ def main():
 
     triangle = Polygon(triangle_p1, triangle_p2, triangle_p3)
     triangle.setWidth(2)
+    triangle.setOutline("black")
     
     triangle.draw(win)
 
-    circle_radius = triangle_size / 4
-    circle_center = Point(center_x, center_y + 35 + triangle_height / 6)
+    circle_radius = triangle_size / 3.6
+    circle_center = Point(center_x, center_y + 30 + triangle_height / 6)
 
     circle = Circle(circle_center, circle_radius)
     circle.setWidth(2)
+    circle.setOutline("black")
     circle.draw(win)
 
-    line_start = Point(center_x, center_y + 35 - triangle_height / 2)
-    line_end = Point(center_x, center_y + 35 + triangle_height / 2)
+    line_start = Point(center_x, center_y + 32 - triangle_height / 2)
+    line_end = Point(center_x, center_y + 30 + triangle_height / 2)
 
     line = Line(line_start, line_end)
     line.setWidth(2)
+    line.setOutline("black")
     line.draw(win)
 
     win.mainloop()
