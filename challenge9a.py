@@ -18,6 +18,4 @@ def main():
 
         time.sleep(0.5)
 
-    win.close()
-
 main()
