@@ -19,7 +19,7 @@ secret = random.randint(1, difficulty)
 count = 1
 
 name = input("What is your name? Enter: ")
-guess = int(input("Guess a number between 1 and " + str(difficulty) + ":"))
+guess = int(input("Hi, " + name +  ". Guess a number between 1 and " + str(difficulty) + ":"))
 print(guess)
 
 while guess != secret:
